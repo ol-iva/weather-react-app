@@ -1,0 +1,52 @@
+.OneDay h5,
+.OneDay .avarage-temperature {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #666;
+}
+
+.OneDay.day {
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    padding: 0;
+}
+
+.OneDay img {
+    width: 80px;
+    display: block;
+    margin: 0 auto;
+}
+
+.OneDay .day-title,
+.OneDay .wind,
+.OneDay .humidity {
+    align-items: center;
+    margin: 10px 0;
+    text-align: center;
+}
+.OneDay .humidity {
+    color: #4b77a7;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+.OneDay .humidity .material-symbols-outlined {
+    padding-top: 20px;
+}
+.OneDay .wind {
+    margin-top: 20px;
+    color: #666;
+}
+.OneDay .avarage-temperature span {
+    display: block;
+    margin: 0 auto;
+    font-size: 24px;
+    font-weight: 500;
+}
+.OneDay span.max {
+    font-size: 24px;
+    font-weight: 500;
+}
+.OneDay span.min {
+    font-size: 18px;
+    opacity: 0.8;
+}

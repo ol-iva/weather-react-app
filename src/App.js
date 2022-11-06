@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, useState } from 'react';
+import Search from "./Search";
+import Current from "./Current";
+import Forecast from "./Forecast";
+import "./App.css";
 
-function App() {
+export default function App() {
+  const [externalCity, setExternalCity] = useState("Paris");
+
+  const handleCityChange = (externalCity) => {
+    setExternalCity(externalCity);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <h1>My New Weather Application</h1>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <section className="App">
+        <div className="container wrapper">
+          <Search onChange={handleCityChange} />
+          <Current externalCity={externalCity} />
+          <Forecast />
+        </div>
+        <div>
+          This project was coded by Ol-Iva and is
+          <a href="https://github.com/ol-iva/weather-react-app">
+             Open-source code on GitHub
+          </a>
+          {/*and*/}
+          {/*<a href="#">*/}
+          {/*  hosted on Netlify*/}
+          {/*</a>*/}
+        </div>
+      </section>
   );
 }
-
-export default App;

@@ -1,0 +1,24 @@
+.Search.search-form-container {
+    margin: 20px 0 40px;
+}
+.Search input {
+    border: 2px #2c8317 solid;
+    height: 100%;
+    width: 100%;
+}
+.Search input::placeholder {
+    color: #2c8317;
+    font-size: 18px;
+}
+.Search input[type="submit"] {
+    background-color: #2c8317;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 8px 28px;
+    font-size: 20px;
+    transition: all 200ms ease-in-out;
+    border: none;
+}
+.Search input[type="submit"]:hover {
+    background-color: #205513;
+}

@@ -1,5 +1,6 @@
 import { React } from "react";
 import { FormattedDate } from "./FormattedDate";
+import CurrentTemperature from "./CurrentTemperature";
 
 import "./Current.css";
 
@@ -21,16 +22,7 @@ export default function Current(props) {
                             )}
 
                             <h2 className="float-right temperature">
-                                <span id="temperature-now">{props.weatherData.temperature}</span>
-                                <span className="units">
-                <a href="/" id="celsius" className="active">
-                  °C
-                </a>{" "}
-                                    |
-                <a href="/" id="fahrenheit">
-                  °F
-                </a>
-              </span>
+                                <CurrentTemperature celsius={props.weatherData.temperature}/>
                             </h2>
                         </div>
                         <div className="col-6">

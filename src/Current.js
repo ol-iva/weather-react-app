@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import axios from "axios";
+import { FormattedDate } from "./FormattedDate";
 
 import "./Current.css";
 
@@ -17,8 +18,8 @@ export default function Current({ externalCity }) {
                 response.data.weather[0].icon +
                 "@2x.png",
             description: response.data.weather[0].description,
-            city: response.data.name
-
+            city: response.data.name,
+            date: new Date(response.data.dt * 1000)
         });
     }
 
@@ -65,7 +66,8 @@ export default function Current({ externalCity }) {
                         </div>
                     </div>
                     <h6 className="date">
-                        <span id="date">Saturday 11:52</span>,
+                        <FormattedDate date={weatherData.date} />,
+                        {/*<span id="date">Saturday 11:52{" "}</span>,*/}
                         <span id="description" className="text-capitalize"> {weatherData.description}</span>
                     </h6>
                     <h2 className="place" id="place">

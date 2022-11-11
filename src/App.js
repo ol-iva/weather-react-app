@@ -18,14 +18,14 @@ export default function App() {
           <Forecast />
         </div>
         <div>
-          This project was coded by Ol-Iva and is
+          This project was coded by Ol-Iva and is{" "}
           <a href="https://github.com/ol-iva/weather-react-app">
              Open-source code on GitHub
+          </a> {" "}
+          and {" "}
+          <a href="https://thunderous-bonbon-2d0c18.netlify.app/">
+            hosted on Netlify
           </a>
-          {/*and*/}
-          {/*<a href="#">*/}
-          {/*  hosted on Netlify*/}
-          {/*</a>*/}
         </div>
       </section>
   );

@@ -1,7 +1,5 @@
-body {
-  padding: 20px;
-}
-.App section {
+
+.App{
   max-width: 800px;
   margin: 0 auto;
 }

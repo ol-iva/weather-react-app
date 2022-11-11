@@ -23,6 +23,14 @@ export default function Current({ externalCity }) {
         });
     }
 
+    function search() {
+        let apiKey = "e7a0e5ad9471df9dbff483f56c2d189b";
+        let unit = "metric";
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${externalCity}&appid=${apiKey}&units=${unit}`;
+
+        axios.get(url).then(showTemperature);
+    }
+
     if (weatherData.ready) {
         console.log(weatherData);
         return (
@@ -67,7 +75,6 @@ export default function Current({ externalCity }) {
                     </div>
                     <h6 className="date">
                         <FormattedDate date={weatherData.date} />,
-                        {/*<span id="date">Saturday 11:52{" "}</span>,*/}
                         <span id="description" className="text-capitalize"> {weatherData.description}</span>
                     </h6>
                     <h2 className="place" id="place">
@@ -77,14 +84,8 @@ export default function Current({ externalCity }) {
             </div>
         );
     } else {
-        let apiKey = "e7a0e5ad9471df9dbff483f56c2d189b";
-        let unit = "metric";
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${externalCity}&appid=${apiKey}&units=${unit}`;
-
-        axios.get(url).then(showTemperature);
-
-        return "Loading ..."
-
+        search();
+        return (<div>Loading ...</div>);
     }
 
 

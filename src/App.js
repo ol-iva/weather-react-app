@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import {React, useEffect, useState} from 'react';
 import Current from "./Current";
 import Forecast from "./Forecast";
 import "./App.css";
@@ -20,10 +20,15 @@ export default function App() {
                 "@2x.png",
             description: response.data.weather[0].description,
             city: response.data.name,
-            date: new Date(response.data.dt * 1000)
+            date: new Date(response.data.dt * 1000),
+            coords: response.data.coord
         });
+        changeColorBody(Math.round(response.data.main.temp));
     }
 
+    useEffect(() => {
+        setWeatherData({ready: false});
+    }, [externalCity]);
 
     function search() {
         let apiKey = "e7a0e5ad9471df9dbff483f56c2d189b";
@@ -42,6 +47,26 @@ export default function App() {
     function handleExternalCityChange(event) {
         event.target.setAttribute("value", event.target.value);
         setExternalCity(event.target.value);
+    }
+
+    function changeColorBody(temp) {
+        let body = document.querySelector("body");
+        if (temp <= 0) {
+            body.setAttribute("style", "background: rgba(0,64,133,.2);");
+        }
+        if (temp > 0 && temp <= 15) {
+            body.setAttribute("style", "background: rgba(61,232,255,.2);");
+        }
+        if (temp > 15 && temp <= 25) {
+            body.setAttribute("style", "background: rgba(255,236,61,.2);");
+        }
+        if (temp > 25 && temp <= 35) {
+            body.setAttribute("style", "background: rgba(255,139,61,.2);");
+        }
+        if (temp > 35) {
+            body.setAttribute("style", "background: rgba(239,67,16,.2);");
+        }
+
     }
 
     if (weatherData.ready) {
@@ -70,7 +95,7 @@ export default function App() {
                         </form>
                     </div>
                     <Current weatherData={weatherData}/>
-                    <Forecast/>
+                    <Forecast coords={ weatherData.coords }/>
                 </div>
                 <div>
                     This project was coded by Ol-Iva and is{" "}

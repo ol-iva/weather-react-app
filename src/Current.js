@@ -23,7 +23,13 @@ export default function Current(props) {
                             )}
 
                             <h2 className="float-right temperature">
-                                <CurrentTemperature celsius={props.weatherData.temp}/>
+                                {/*<CurrentTemperature celsius={props.weatherData.temp}/>*/}
+                                <span id="temperature-now">{props.weatherData.temp}</span>
+                                <span className="units">
+                                    <span className="active">
+                                        °C
+                                    </span>
+                                </span>
                             </h2>
                         </div>
                         <div className="col-6">
@@ -48,3 +54,5 @@ export default function Current(props) {
             </div>
         );
     }
+
+

@@ -14,3 +14,11 @@ export default  function FormattedDate(props) {
     console.log(props.date);
     return (<span id="date">{day}{" "}{hours}:{minutes}</span>);
 }
+
+export function formattedDay(timestamp) {
+    let date = new Date(timestamp * 1000);
+
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    return days[date.getDay()];
+}

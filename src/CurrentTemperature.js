@@ -5,8 +5,6 @@ export default function CurrentTemperature(props) {
     let [unit, setUnit] = useState("celsius");
     let [temperature, setTemperature] = useState(props.celsius);
 
-    console.log(temperature)
-
     function handleFahrenheit(event) {
         event.preventDefault();
         let fahrenheit = Math.round((temperature * 9/5) + 32);

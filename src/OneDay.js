@@ -4,8 +4,9 @@ import "./OneDay.css";
 
 export default function OneDay(props) {
     return (
-        <div className="OneDay day col-2">
+        <div className="OneDay day ">
             <div className="day-title">
+                {props.time}
                 <h5>{props.day}</h5>
             </div>
             <div className="img-sun">
@@ -21,7 +22,7 @@ export default function OneDay(props) {
             </div>
             <div className="humidity">
                 <div>
-                    <span className="material-symbols-outlined">humidity_high</span>
+                    <span className="material-symbols-outlined">{props.humidityIcon}</span>
                 </div>
                 <span className="humidity-number">{props.humidity}</span> %
             </div>

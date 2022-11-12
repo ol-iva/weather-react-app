@@ -1,3 +1,7 @@
+* {
+    transition: all 800ms ease-in-out;
+}
 body {
     padding: 20px;
 }
+

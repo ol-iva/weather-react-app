@@ -11,7 +11,6 @@ export default  function FormattedDate(props) {
     if (hours < 10) {
         hours = `0${hours}`
     }
-    console.log(props.date);
     return (<span id="date">{day}{" "}{hours}:{minutes}</span>);
 }
 

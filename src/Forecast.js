@@ -35,7 +35,7 @@ export default function Forecast(props) {
     }
     function colors(temp) {
         if (temp < 0) {
-            return { backgroundColor: "#004085", color: "#333333" };
+            return { backgroundColor: "#004085", color: "#ffffff" };
         }
         if (temp >= 0 && temp < 15) {
             return { backgroundColor: "#3de8ff", color: "#333333" }

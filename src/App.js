@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react';
+import {React, useState} from 'react';
 import Current from "./Current";
 import Forecast from "./Forecast";
 import "./App.css";
@@ -26,10 +26,6 @@ export default function App() {
         changeColorBody(Math.round(response.data.main.temp));
     }
 
-    useEffect(() => {
-        setWeatherData({ready: false});
-    }, [externalCity]);
-
     function search() {
         let apiKey = "e7a0e5ad9471df9dbff483f56c2d189b";
         let unit = "metric";
@@ -40,8 +36,8 @@ export default function App() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        setWeatherData({ready: false})
         setExternalCity(event.target.city.value);
-        search();
     }
 
     function handleExternalCityChange(event) {

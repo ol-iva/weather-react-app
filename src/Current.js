@@ -1,6 +1,6 @@
-import {React, useState} from "react";
-import { FormattedDate } from "./FormattedDate";
-import CurrentTemperature from "./CurrentTemperature";
+import React from "react";
+import  FormattedDate from "./FormattedDate";
+import CurrentTemperature  from "./CurrentTemperature";
 
 import "./Current.css";
 

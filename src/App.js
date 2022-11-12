@@ -22,7 +22,6 @@ export default function App() {
             city: response.data.name,
             date: new Date(response.data.dt * 1000)
         });
-        console.log(weatherData);
     }
 
 
@@ -30,7 +29,6 @@ export default function App() {
         let apiKey = "e7a0e5ad9471df9dbff483f56c2d189b";
         let unit = "metric";
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${externalCity}&appid=${apiKey}&units=${unit}`;
-        console.log(url);
 
         axios.get(url).then(showTemperature);
     }
@@ -43,11 +41,10 @@ export default function App() {
 
     function handleExternalCityChange(event) {
         event.target.setAttribute("value", event.target.value);
-        // setExternalCity(event.target.value);
+        setExternalCity(event.target.value);
     }
 
     if (weatherData.ready) {
-        console.log(weatherData);
         return (
             <section className="App">
                 <div className="container wrapper">
@@ -57,9 +54,9 @@ export default function App() {
                                 <div className="col-9">
                                     <input
                                         id="city-input"
-                                        type="text"
-                                        autoComplete="off"
-                                        placeholder="Search place..."
+                                        placeholder="Enter a city.."
+                                        className="form-control"
+                                        autoFocus="on"
                                         name="city"
 
                                         onChange={handleExternalCityChange}

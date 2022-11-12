@@ -1,6 +1,5 @@
 import React from "react";
 import  FormattedDate from "./FormattedDate";
-import CurrentTemperature  from "./CurrentTemperature";
 
 import "./Current.css";
 

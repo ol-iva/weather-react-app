@@ -7,12 +7,12 @@ import axios from "axios";
 
 export default function App() {
   const [externalCity, setExternalCity] = useState("Paris");
-    let [weatherData, setWeatherData] = useState({ready: false})
+    let [weatherData, setWeatherData] = useState({ready: false});
 
     function showTemperature(response) {
         setWeatherData({
             ready: true,
-            temperature: Math.round(response.data.main.temp),
+            temp: Math.round(response.data.main.temp),
             humidity: Math.round(response.data.main.humidity),
             speed: Math.round(response.data.wind.speed),
             icon: "https://openweathermap.org/img/wn/" +
@@ -22,6 +22,7 @@ export default function App() {
             city: response.data.name,
             date: new Date(response.data.dt * 1000)
         });
+        console.log(weatherData);
     }
 
 
@@ -29,25 +30,27 @@ export default function App() {
         let apiKey = "e7a0e5ad9471df9dbff483f56c2d189b";
         let unit = "metric";
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${externalCity}&appid=${apiKey}&units=${unit}`;
+        console.log(url);
 
         axios.get(url).then(showTemperature);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
+        setExternalCity(event.target.city.value);
         search();
     }
 
     function handleExternalCityChange(event) {
         event.target.setAttribute("value", event.target.value);
-        setExternalCity(event.target.value);
+        // setExternalCity(event.target.value);
     }
 
     if (weatherData.ready) {
+        console.log(weatherData);
         return (
             <section className="App">
                 <div className="container wrapper">
-                    {/*<Search onChange={handleCityChange} />*/}
                     <div className="Search search-form-container">
                         <form id="search-form" onSubmit={handleSubmit}>
                             <div className="row">
@@ -57,6 +60,7 @@ export default function App() {
                                         type="text"
                                         autoComplete="off"
                                         placeholder="Search place..."
+                                        name="city"
 
                                         onChange={handleExternalCityChange}
                                     />

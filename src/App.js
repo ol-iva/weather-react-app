@@ -8,6 +8,7 @@ import axios from "axios";
 export default function App() {
   const [externalCity, setExternalCity] = useState("Paris");
     let [weatherData, setWeatherData] = useState({ready: false});
+    let [error, setError] = useState(false);
 
     function showTemperature(response) {
         setWeatherData({
@@ -23,6 +24,7 @@ export default function App() {
             date: new Date(response.data.dt * 1000),
             coords: response.data.coord
         });
+        setError(false);
         changeColorBody(Math.round(response.data.main.temp));
     }
 
@@ -31,7 +33,12 @@ export default function App() {
         let unit = "metric";
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${externalCity}&appid=${apiKey}&units=${unit}`;
 
-        axios.get(url).then(showTemperature);
+        axios.get(url).then(showTemperature).catch(handleError);
+    }
+
+    function handleError(error){
+       setError(true);
+       setWeatherData({ready: true});
     }
 
     function handleSubmit(event) {
@@ -90,8 +97,13 @@ export default function App() {
                             </div>
                         </form>
                     </div>
-                    <Current weatherData={weatherData}/>
-                    <Forecast coords={ weatherData.coords }/>
+                    {!error ? (
+                            <div><Current weatherData={weatherData}/>
+                                <Forecast coords={weatherData.coords}/></div>
+                        )
+                        : (<h4>Enter the right city name please</h4>)
+                    }
+
                 </div>
                 <div>
                     This project was coded by Ol-Iva and is{" "}
